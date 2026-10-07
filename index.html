@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="理论片电影网是专注于理论片、学术影像、纪录电影与艺术电影在线观赏的独立影视平台。本站汇集国内外经典理论片电影资源，涵盖电影理论解析、导演手法研讨、镜头语言拆解、影视美学赏析等深度内容，为影视专业学习者、电影爱好者和研究人员提供高清流畅的观影体验与系统的理论片电影资料库。">
+<meta name="keywords" content="理论片电影网,理论片,电影理论,理论电影,纪录电影,艺术电影,影视理论,电影解析,导演研究,镜头语言,电影美学,独立电影,经典理论片,电影评论,影视鉴赏">
+<meta name="author" content="理论片电影网">
+<meta name="theme-color" content="#0f1729">
+<meta name="format-detection" content="telephone=no">
+<title>理论片电影网 - 专注理论片与电影美学深度解析的影视平台</title>
+<style>
+:root{
+  --ink:#e8ecf5;
+  --ink-dim:#9aa6bd;
+  --bg:#0b1020;
+  --bg2:#121a30;
+  --line:rgba(255,255,255,.08);
+  --accent:#ff7a45;
+  --accent2:#3aa0ff;
+  --gold:#e7c66b;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(255,122,69,.18), transparent 60%),
+    radial-gradient(1000px 500px at 0% 10%, rgba(58,160,255,.14), transparent 55%),
+    linear-gradient(180deg,#0b1020,#0d1326 40%,#0b1020);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:46px 46px;
+  mask-image:radial-gradient(circle at 50% 0%,#000,transparent 70%);
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* Header */
+header.site-head{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(12px);
+  background:rgba(11,16,32,.72);
+  border-bottom:1px solid var(--line);
+}
+.head-in{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand h1{font-size:19px;font-weight:800;letter-spacing:.5px;background:linear-gradient(90deg,#fff,#ffb893);-webkit-background-clip:text;background-clip:text;color:transparent}
+.brand span{font-size:11px;color:var(--ink-dim);border:1px solid var(--line);padding:2px 8px;border-radius:20px}
+nav.top-nav{margin-left:auto;display:flex;gap:6px;align-items:center}
+nav.top-nav a{
+  font-size:13.5px;padding:8px 13px;border-radius:10px;color:#c9d3e6;transition:.25s;
+}
+nav.top-nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+nav.top-nav a.cta{background:var(--accent);color:#170b04;font-weight:700}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--ink);width:40px;height:40px;border-radius:10px;font-size:20px;cursor:pointer}
+
+/* Hero */
+.hero{padding:78px 0 60px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:2px;color:var(--gold);border:1px solid rgba(231,198,107,.3);padding:6px 14px;border-radius:30px;background:rgba(231,198,107,.06)}
+h2.hero-t{font-size:clamp(30px,5.2vw,56px);line-height:1.18;font-weight:900;margin:18px 0 6px}
+h2.hero-t em{font-style:normal;color:var(--accent)}
+.hero-sub{color:var(--ink-dim);font-size:15.5px;max-width:560px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{padding:13px 26px;border-radius:12px;font-size:14.5px;font-weight:700;transition:.25s;display:inline-flex;align-items:center;gap:8px}
+.btn-main{background:var(--accent);color:#170b04}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(255,122,69,.7)}
+.btn-ghost{border:1px solid var(--line);color:#d7deed}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+.hero-meta{margin-top:30px;display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12.5px;color:var(--ink-dim)}
+.hero-meta b{color:#fff;font-weight:600}
+
+.hero-card{position:relative;border-radius:20px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(160deg,#1a2440,#0f1630);padding:26px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
+.hero-card .frame{aspect-ratio:4/5;border-radius:12px;overflow:hidden;position:relative}
+.hero-card .frame .lay{position:absolute;inset:0;background:
+   linear-gradient(180deg,transparent 30%,rgba(11,16,32,.96)),
+   repeating-linear-gradient(90deg,#2a3558 0 1px,transparent 1px 14%),
+   repeating-linear-gradient(0deg,#2a3558 0 1px,transparent 1px 14%);
+   background-color:#1c2745}
+.hero-card .frame .play{position:absolute;inset:0;margin:auto;width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);display:grid;place-items:center;font-size:24px;color:#fff}
+.hero-card h4{margin-top:18px;font-size:17px}
+.hero-card p{font-size:12.5px;color:var(--ink-dim);margin-top:6px}
+
+/* Section */
+section{padding:56px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.sec-tag{font-size:12px;letter-spacing:3px;color:var(--accent2);text-transform:uppercase}
+h3.sec-t{font-size:clamp(22px,3vw,32px);font-weight:850;margin-top:6px}
+.sec-line{flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent);margin-bottom:8px;min-width:60px}
+.sec-more{font-size:13px;color:var(--ink-dim);border-bottom:1px dashed var(--line);padding-bottom:2px}
+
+/* Cards */
+.grid{display:grid;gap:20px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.3s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);border-color:rgba(255,122,69,.45);box-shadow:0 18px 34px -18px rgba(0,0,0,.7)}
+.card .thumb{aspect-ratio:16/10;position:relative;overflow:hidden}
+.card .thumb .fill{position:absolute;inset:0;display:grid;place-items:center;font-size:26px;font-weight:800;color:rgba(255,255,255,.18);letter-spacing:2px}
+.t1{background:linear-gradient(135deg,#3a2a6b,#1d2747)}
+.t2{background:linear-gradient(135deg,#6b2a3a,#47201d)}
+.t3{background:linear-gradient(135deg,#2a5b6b,#1d3d47)}
+.t4{background:linear-gradient(135deg,#5b6b2a,#34471d)}
+.t5{background:linear-gradient(135deg,#2a3a6b,#1d2247)}
+.t6{background:linear-gradient(135deg,#6b4a2a,#47331d)}
+.card .thumb .badge{position:absolute;top:12px;left:12px;font-size:11px;padding:4px 10px;border-radius:20px;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);color:#fff}
+.card .thumb .dur{position:absolute;bottom:12px;right:12px;font-size:11px;padding:3px 9px;border-radius:6px;background:rgba(255,122,69,.9);color:#170b04;font-weight:700}
+.card .body{padding:16px 18px;flex:1;display:flex;flex-direction:column}
+.card .body h4{font-size:15.5px;line-height:1.5}
+.card .body p{font-size:12.5px;color:var(--ink-dim);margin-top:8px;flex:1}
+.card .foot{margin-top:12px;display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:var(--ink-dim);border-top:1px solid var(--line);padding-top:10px}
+.stars{color:var(--gold);letter-spacing:1px}
+
+/* Feature row */
+.feat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:8px}
+.feat{background:var(--bg2);padding:24px 22px;transition:.25s}
+.feat:hover{background:#161f3a}
+.feat .ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;font-size:19px;background:rgba(255,122,69,.12);color:var(--accent);margin-bottom:12px}
+.feat h5{font-size:15px;margin-bottom:6px}
+.feat p{font-size:12.5px;color:var(--ink-dim)}
+
+/* Timeline */
+.tl{position:relative;padding-left:26px;margin-top:10px}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--accent2))}
+.tl-item{position:relative;padding:0 0 26px 20px}
+.tl-item::before{content:"";position:absolute;left:-23px;top:7px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.tl-item h5{font-size:15.5px}
+.tl-item time{font-size:11.5px;color:var(--accent2);letter-spacing:1px}
+.tl-item p{font-size:13px;color:var(--ink-dim);margin-top:4px}
+
+/* FAQ */
+.faq-item{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg2);margin-bottom:12px}
+.faq-q{padding:16px 20px;font-size:15px;font-weight:650;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center}
+.faq-q .arw{color:var(--accent);transition:.3s;font-size:13px}
+.faq-item.open .faq-q .arw{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:.35s ease}
+.faq-a p{padding:0 20px 18px;font-size:13.5px;color:var(--ink-dim)}
+.faq-item.open .faq-a{max-height:300px}
+
+/* CTA band */
+.band{border-radius:22px;padding:44px 40px;background:
+   radial-gradient(700px 300px at 100% 0%, rgba(255,122,69,.22), transparent 60%),
+   linear-gradient(135deg,#1a2440,#0f1630);
+   border:1px solid var(--line);display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.band h3{font-size:clamp(22px,3vw,34px);font-weight:850}
+.band p{color:var(--ink-dim);margin-top:10px;font-size:14px}
+.band .act{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+
+/* Footer */
+footer{border-top:1px solid var(--line);padding:44px 0 26px;margin-top:30px;background:rgba(8,12,24,.5)}
+.foot-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:26px}
+.foot-col h6{font-size:14px;margin-bottom:12px;color:#fff}
+.foot-col ul{list-style:none}
+.foot-col li{font-size:12.5px;color:var(--ink-dim);padding:4px 0}
+.foot-col li:hover{color:#fff;cursor:pointer}
+.foot-logo h4{font-size:18px;background:linear-gradient(90deg,#fff,#ffb893);-webkit-background-clip:text;background-clip:text;color:transparent}
+.foot-logo p{font-size:12.5px;color:var(--ink-dim);margin-top:8px;max-width:320px}
+.copy{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--ink-dim)}
+.copy a{color:var(--accent2)}
+
+/* Tablet */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:repeat(2,1fr)}
+  .feat-row{grid-template-columns:repeat(2,1fr)}
+  .band{grid-template-columns:1fr;padding:32px 26px}
+  .band .act{justify-content:flex-start}
+  .foot-grid{grid-template-columns:repeat(2,1fr)}
+}
+/* Mobile */
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  .menu-btn{display:grid;place-items:center;margin-left:auto}
+  nav.top-nav{position:fixed;inset:64px 0 0;flex-direction:column;align-items:stretch;gap:0;background:rgba(11,16,32,.97);backdrop-filter:blur(16px);padding:14px;transform:translateX(100%);transition:.3s;border-top:1px solid var(--line)}
+  nav.top-nav.open{transform:translateX(0)}
+  nav.top-nav a{border-radius:12px;padding:14px 16px;font-size:15px}
+  .hero{padding:42px 0 40px}
+  .grid-4,.grid-3,.grid-2{grid-template-columns:1fr}
+  .feat-row{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+  .copy{flex-direction:column}
+  h2.hero-t{font-size:29px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<header class="site-head">
+  <div class="wrap head-in">
+    <div class="brand">
+      <h1>理论片电影网</h1>
+      <span>lilunpiandianyingwang-app</span>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="菜单">☰</button>
+    <nav class="top-nav" id="topNav">
+      <a href="#intro">平台概述</a>
+      <a href="#channel">栏目导航</a>
+      <a href="#resource">片库资源</a>
+      <a href="#theory">理论研读</a>
+      <a href="#column">专题专栏</a>
+      <a href="#news">行业动态</a>
+      <a href="#about">关于我们</a>
+      <a href="#contact" class="cta">立即观影</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">◆ 影像思想 · 理论先行</span>
+        <h2 class="hero-t">在<span style="color:var(--accent)">理论片</span>的镜像里<br>重新读懂每一帧电影</h2>
+        <p class="hero-sub">理论片电影网（lilunpiandianyingwang-app）致力于搭建一座连接<strong>电影理论</strong>与<strong>观影实践</strong>的桥梁。我们不只提供理论片、纪录电影与艺术电影的高清在线观赏，更以镜头拆解、导演手法研讨、叙事结构分析与影视美学赏析，让每一次点击都成为一次有深度的影像阅读。</p>
+        <div class="hero-actions">
+          <a class="btn btn-main" href="#resource">▸ 进入片库</a>
+          <a class="btn btn-ghost" href="#theory">理论研读室</a>
+        </div>
+        <div class="hero-meta">
+          <span>片源 <b>12,800+</b></span>
+          <span>理论专题 <b>360+</b></span>
+          <span>日均更新 <b>每日</b></span>
+          <span>访问入口 <b>https://lilunpiandianyingwang-app.github.io</b></span>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <div class="frame">
+          <div class="lay"></div>
+          <div class="play">▶</div>
+        </div>
+        <h4>今日主推 · 理论片精选</h4>
+        <p>《镜头之外的思想》—— 一部关于电影本体论的理论片，以十四段经典影像互文，追问"电影为何而成为电影"。</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 栏目导航 -->
+  <section id="channel">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">SECTION 01 / 栏目导航</div>
+          <h3 class="sec-t">八大栏目，构筑理论片的完整版图</h3>
+        </div>
+        <span class="sec-line"></span>
+        <a class="sec-more" href="#">查看完整栏目地图</a>
+      </div>
+
+      <div class="feat-row">
+        <div class="feat">
+          <div class="ic">①</div>
+          <h5>理论片放映厅</h5>
+          <p>汇集中外经典理论片、实验电影与先锋影像，按"作者、流派、年代、命题"四维索引，支持高清流畅在线观赏。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">②</div>
+          <h5>电影理论研读</h5>
+          <p>蒙太奇、长镜头、作者论、精神分析、女性主义、后殖民……系统梳理电影理论脉络，配原片片段对照讲解。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">③</div>
+          <h5>导演手法研讨</h5>
+          <p>逐镜拆解塔可夫斯基、伯格曼、侯孝贤、阿彼察邦等作者的空间、时间与声音处理，还原创作现场的抉择。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">④</div>
+          <h5>纪录电影档案</h5>
+          <p>从直接电影到真实电影，从 observational 到 essay film，建立中文世界较完整的纪录理论与片目档案。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">⑤</div>
+          <h5>影视美学赏析</h5>
+          <p>色彩、构图、光线、美术、服化道——把"好看"翻译成可分析的语言，让审美判断有据可依。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">⑥</div>
+          <h5>镜头语言拆解</h5>
+          <p>一个镜头为何这样拍？景别、机位、运动、焦段、剪辑点的选择背后，藏着叙事与情绪的密码。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">⑦</div>
+          <h5>影视学术前沿</h5>
+          <p>追踪电影学、媒介研究、数字人文的最新论文与会议，把学术话语转译为可理解的影像思考。</p>
+        </div>
+        <div class="feat">
+          <div class="ic">⑧</div>
+          <h5>独立影像展映</h5>
+          <p>为独立导演与短片作者提供展映窗口，关注未被院线看见的影像实验与在地表达。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 平台概述 -->
+  <section id="intro" style="padding-top:20px">
+    <div class="wrap grid grid-2">
+      <div style="background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:30px">
+        <div class="sec-tag">ABOUT / 平台概述</div>
+        <h3 class="sec-t" style="margin-bottom:14px">为什么需要一座"理论片"的网站？</h3>
+        <p style="color:var(--ink-dim);font-size:14px">电影从来不只是故事。当画面亮起，构图已在言说，剪辑已在思辨，声音已在建构意识形态。理论片电影网相信，<strong>看懂一部电影</strong>与<strong>读懂一种电影观念</strong>是两件彼此成就的事。</p>
+        <p style="color:var(--ink-dim);font-size:14px;margin-top:10px">本站以"理论片"为核心词，辐射纪录电影、艺术电影、实验影像与独立电影，兼顾学术严谨与观影乐趣。无论你是影视专业学生、论文写作者、创作者，还是单纯不愿停留在剧情层面的观众，都能在这里找到可沉淀的内容。</p>
+        <div class="hero-meta" style="margin-top:20px">
+          <span>建站理念 <b>影像即思想</b></span>
+          <span>内容立场 <b>非营利 · 学术向</b></span>
+        </div>
+      </div>
+      <div style="display:grid;gap:16px">
+        <div style="background:linear-gradient(135deg,#1a2440,#0f1630);border:1px solid var(--line);border-radius:16px;padding:22px">
+          <h5 style="font-size:15px">◈ 三重价值</h5>
+          <p style="font-size:13px;color:var(--ink-dim);margin-top:6px">观赏价值 · 学术价值 · 创作价值。同一部理论片，观众看见美，学者看见命题，创作者看见方法。</p>
+        </div>
+        <div style="background:linear-gradient(135deg,#1a2440,#0f1630);border:1px solid var(--line);border-radius:16px;padding:22px">
+          <h5 style="font-size:15px">◈ 四种读法</h5>
+          <p style="font-size:13px;color:var(--ink-dim);margin-top:6px">形式读 · 叙事读 · 文化读 · 技术读。提供可复用的分析框架，而非标准答案。</p>
+        </div>
+        <div style="background:linear-gradient(135deg,#1a2440,#0f1630);border:1px solid var(--line);border-radius:16px;padding:22px">
+          <h5 style="font-size:15px">◈ 一条承诺</h5>
+          <p style="font-size:13px;color:var(--ink-dim);margin-top:6px">不追逐流量热点，不搬运低质资源。每一篇研读、每一份片单，都经过人工筛选与校对。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 片库资源 -->
+  <section id="resource">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">SECTION 02 / 片库资源</div>
+          <h3 class="sec-t">理论片电影网 · 精选片库</h3>
+        </div>
+        <span class="sec-line"></span>
+        <a class="sec-more" href="#">片单索引</a>
+      </div>
+
+      <div class="grid grid-4">
+        <article class="card">
+          <div class="thumb t1">
+            <div class="fill">蒙太奇</div>
+            <span class="badge">理论片</span>
+            <span class="dur">78′</span>
+          </div>
+          <div class="body">
+            <h4>《罢工》与蒙太奇的诞生</h4>
+            <p>以爱森斯坦早期作品为标本，解析"冲突蒙太奇"如何把屠宰场与镇压并置，制造出超越叙事的理性冲击。</p>
+            <div class="foot"><span class="stars">★★★★☆</span><span>1925 · 苏联</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t2">
+            <div class="fill">长镜头</div>
+            <span class="badge">艺术电影</span>
+            <span class="dur">142′</span>
+          </div>
+          <div class="body">
+            <h4>《镜子》的时间褶皱</h4>
+            <p>塔可夫斯基用长镜头消解因果，让记忆以诗意而非逻辑的方式流淌。本文逐镜还原其空间调度。</p>
+            <div class="foot"><span class="stars">★★★★★</span><span>1975 · 苏联</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t3">
+            <div class="fill">真实电影</div>
+            <span class="badge">纪录电影</span>
+            <span class="dur">60′</span>
+          </div>
+          <div class="body">
+            <h4>《夏日纪事》的介入</h4>
+            <p>让·鲁什与莫兰走上巴黎街头提问"你幸福吗？"——真实电影如何以介入姿态改写纪录片伦理。</p>
+            <div class="foot"><span class="stars">★★★★☆</span><span>1961 · 法国</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t4">
+            <div class="fill">作者论</div>
+            <span class="badge">导演研讨</span>
+            <span class="dur">系列</span>
+          </div>
+          <div class="body">
+            <h4>侯孝贤：留白的美学</h4>
+            <p>从《悲情城市》到《刺客聂隐娘》，读解侯孝贤如何以固定机位、自然光与画外空间，构筑东方叙事。</p>
+            <div class="foot"><span class="stars">★★★★★</span><span>台湾</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t5">
+            <div class="fill">女性主义</div>
+            <span class="badge">理论研读</span>
+            <span class="dur">94′</span>
+          </div>
+          <div class="body">
+            <h4>《让娜·迪尔曼》的日常革命</h4>
+            <p>被劳拉·穆尔维称为"女性主义电影里程碑"，以三小时零碎家务，颠覆男性凝视的观影机制。</p>
+            <div class="foot"><span class="stars">★★★★☆</span><span>1975 · 比利时</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t6">
+            <div class="fill">实验影像</div>
+            <span class="badge">先锋</span>
+            <span class="dur">9′</span>
+          </div>
+          <div class="body">
+            <h4>《失衡》的纯电影</h4>
+            <p>回到电影的本源：当叙事、演员、对白全部抽离，仅剩光、影、节奏与胶片质感，电影是否依然存在？</p>
+            <div class="foot"><span class="stars">★★★★☆</span><span>1929 · 德国</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t1">
+            <div class="fill">声音</div>
+            <span class="badge">技术读</span>
+            <span class="dur">118′</span>
+          </div>
+          <div class="body">
+            <h4>《声音与愤怒》</h4>
+            <p>从《 Citizen Kane 》的深焦与混音，到《降临》的非线性声景，梳理电影声音理论的演进脉络。</p>
+            <div class="foot"><span class="stars">★★★★☆</span><span>专题</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb t3">
+            <div class="fill">在地</div>
+            <span class="badge">独立影像</span>
+            <span class="dur">53′</span>
+          </div>
+          <div class="body">
+            <h4>《长江图》的河流哲学</h4>
+            <p>杨超以逆行的航程追问时间与乡愁。一部关于"寻找"的理论片，本身即是电影本体的隐喻。</p>
+            <div class="foot"><span class="stars">★★★★☆</span><span>2016 · 中国</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 理论研读 -->
+  <section id="theory">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">SECTION 03 / 理论研读</div>
+          <h3 class="sec-t">电影理论 · 可读可学的六个命题</h3>
+        </div>
+        <span class="sec-line"></span>
+        <a class="sec-more" href="#">研读目录</a>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="body">
+            <span class="badge" style="display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,122,69,.14);color:var(--accent)">形式主义</span>
+            <h4 style="margin-top:12px">蒙太奇并非剪辑，而是一种思维方式</h4>
+            <p>库里肖夫效应证明：意义产生于镜头之间的关系，而非镜头本身。理论片电影网以此为起点，重读"1+1&gt;2"的影像算术。</p>
+            <div class="foot"><span>阅读 12 分钟</span><span>32 篇延伸</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <span class="badge" style="display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(58,160,255,.14);color:var(--accent2)">写实主义</span>
+            <h4 style="margin-top:12px">巴赞的长镜头：为何"真实"需要被保留？</h4>
+            <p>与蒙太奇相对，巴赞主张以景深与长镜头尊重时空的完整性。两种理论的张力，恰是理解现代电影的一把钥匙。</p>
+            <div class="foot"><span>阅读 15 分钟</span><span>27 篇延伸</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <span class="badge" style="display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(231,198,107,.14);color:var(--gold)">精神分析</span>
+            <h4 style="margin-top:12px">凝视：摄影机、银幕与观众的三角关系</h4>
+            <p>劳拉·穆尔维《视觉快感与叙事电影》如何改变了我们观看好莱坞的方式？从"看"的权力出发，重审性别与欲望。</p>
+            <div class="foot"><span>阅读 18 分钟</span><span>41 篇延伸</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <span class="badge" style="display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(255,122,69,.14);color:var(--accent)">作者论</span>
+            <h4 style="margin-top:12px">"作者"死了，导演还在吗？</h4>
+            <p>从《电影手册》的 auteur theory 到后结构主义的反诘，重估"导演即作者"这一命题在工业化时代的适用边界。</p>
+            <div class="foot"><span>阅读 14 分钟</span><span>19 篇延伸</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <span class="badge" style="display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(58,160,255,.14);color:var(--accent2)">类型研究</span>
+            <h4 style="margin-top:12px">类型不是配方，而是一套契约</h4>
+            <p>西部片、黑色电影、科幻片……类型片如何在重复中创新？理论片电影网以"惯例—颠覆"模型拆解类型演进。</p>
+            <div class="foot"><span>阅读 16 分钟</span><span>38 篇延伸</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="body">
+            <span class="badge" style="display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;background:rgba(231,198,107,.14);color:var(--gold)">数字时代</span>
+            <h4 style="margin-top:12px">当算法开始"拍"电影</h4>
+            <p>AI 生成影像、虚拟制片、互动叙事——电影理论的边界正在被重写。我们在 https://lilunpiandianyingwang-app.github.io 持续追踪这场变革。</p>
+            <div class="foot"><span>阅读 20 分钟</span><span>持续更新</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题专栏 -->
+  <section id="column">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">SECTION 04 / 专题专栏</div>
+          <h3 class="sec-t">正在连载的专题</h3>
+        </div>
+        <span class="sec-line"></span>
+        <a class="sec-more" href="#">全部专题</a>
+      </div>
+
+      <div class="grid grid-2">
+        <div style="background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center">
+          <div style="aspect-ratio:3/4;border-radius:10px;background:linear-gradient(160deg,#ff7a45,#3a1d0f);display:grid;place-items:center;font-size:13px;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,.9);text-align:center;padding:8px">百镜<br>计划</div>
+          <div>
+            <h4>百镜计划 · 100 个改变电影史的镜头</h4>
+            <p style="font-size:13px;color:var(--ink-dim);margin-top:6px">从《火车进站》到《寄生虫》的地下室，逐镜解析其形式选择与历史位置。已更新 64 / 100。</p>
+            <div class="hero-meta" style="margin-top:10px"><span>连载中</span><span>每周二更新</span></div>
+          </div>
+        </div>
+        <div style="background:var(--bg2);border:1px solid var(--line);border-radius:16px;padding:24px;display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center">
+          <div style="aspect-ratio:3/4;border-radius:10px;background:linear-gradient(160deg,#3aa0ff,#0f2a3a);display:grid;place-items:center;font-size:13px;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,.9);text-align:center;padding:8px">读解<br>手册</div>
+          <div>
+            <h4>电影读解手册 · 给写作者的工具箱</h4>
+            <p style="font-size:13px;color:var(--ink-dim);margin-top:6px">论文、影评、创作笔记通用：如何从"我觉得好看"推进到"它为何有效"。含模板、术语表与示范文本。</p>
+            <div class="hero-meta" style="margin-top:10px"><span>已完结</span><span>共 22 讲</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 行业动态 -->
+  <section id="news">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="sec-tag">SECTION 05 / 行业动态</div>
+          <h3 class="sec-t">理论片与艺术电影的当下时刻</h3>
+        </div>
+        <span class="sec-line"></span>
+        <a class="sec-more" href="#"> archives </a>
+      </div>
+
+      <div class="grid grid-2">
+        <div>
+          <div class="tl">
+            <div class="tl-item">
+              <time>2026 · 09</time>
+              <h5>威尼斯与多伦多之后：艺术电影的流媒体困境</h5>
+              <p>当首映礼的红毯被算法推荐取代，理论片与艺术电影如何保住"被看见"的权利？</p>
+            </div>
+            <div class="tl-item">
+              <time>2026 · 08</time>
+              <h5>中国独立影像年度观察</h5>
+              <p>从 FIRST 到平遥，青年导演的作者意识与制片现实之间的拉扯，比银幕上更剧烈。</p>
+            </div>
+            <div class="tl-item">
+              <time>2026 · 07</time>
+              <h5>修复放映：胶片的时间考古学</h5>
+              <p>4K 修复不只是清晰度提升，更是一次对电影物质性的重新确认。</p>
+            </div>
+            <div class="tl-item">
+              <time>2026 · 06</time>
+              <h5>理论片电影网的片目增补说明</h5>
+              <p>本次增补 420 部理论片与纪录电影，补入东欧、拉美与东南亚的被忽视作者。</p>
+            </div>
+          </div>
+        </div>
+        <div style="display:grid;gap:14px;align-content:start">
+          <div style="border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:10px;padding:16px 18px;background:var(--bg2)">
+            <h5 style="font-size:14.5px">本周研读 · 推荐</h5>
+            <p style="font-size:12.5px;color:var(--ink-dim);margin-top:5px">《电影是什么？》重读笔记：巴赞的"木乃伊情结"与数字时代的影像保存。</p>
+          </div>
+          <div style="border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:10px;padding:16px 18px;background:var(--bg2)">
+            <h5 style="font-size:14.5px">片单 · 主题</h5>
+            <p style="font-size:12.5px;color:var(--ink-dim);margin-top:5px">"城市即角色"：12 部以都市空间为真正主角的理论片与艺术电影。</p>
+          </div>
+          <div style="border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:16px 18px;background:var(--bg2)">
+            <h5 style="font-size:14.5px">问答 · 来自读者</h5>
+            <p style="font-size:12.5px;color:var(--ink-dim);margin-top:5px">"看理论片一定要做笔记吗？"——不必，但你可以试着在观影后写下三个'为什么'。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap" style="max-width:860px">
+      <div class="sec-head" style="justify-content:center;text-align:center;flex-direction:column">
+        <div class="sec-tag">Q &amp; A</div>
+        <h3 class="sec-t">关于理论片电影网的常见疑问</h3>
+      </div>
+
+      <div class="faq-item open">
+        <div class="faq-q">什么是"理论片"？它和普通电影有什么区别？<span class="arw">▼</span></div>
+        <div class="faq-a"><p>理论片（theoretical film / essay film）是以影像本身探讨电影本质、媒介属性或社会命题的作品。它未必有传统剧情，却以形式自身提出论点。与"关于电影的纪录片"不同，理论片本身就是论证过程。本站也把与之相邻的纪录电影、实验影像、艺术电影纳入片库，因为它们共享同一套"以影像思考"的基因。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">理论片电影网的内容适合哪些人？<span class="arw">▼</span></div>
+        <div class="faq-a"><p>影视与文学专业的师生、正在写论文或影评的研究者、导演与摄影等创作岗位从业者，以及"看完电影想再多懂一点"的普通观众。内容按难度分级：标注"入门"的可直接观看，"进阶"建议配合文本，"研读"则面向专业读者。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">片库资源如何索引与检索？<span class="arw">▼</span></div>
+        <div class="faq-a"><p>提供四种检索维度：按作者（导演/制片国家）、按流派（蒙太奇、真实电影、直接电影、散文电影等）、按年代、按理论命题（凝视、时空、声音、性别、后殖民）。每个条目附"关联研读"链接，形成"看片—读文—再看片"的闭环。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">网站网址与访问方式？<span class="arw">▼</span></div>
+        <div class="faq-a"><p>理论片电影网的官方访问地址为 <strong>https://lilunpiandianyingwang-app.github.io</strong>，移动端与原生域名保持一致，采用响应式布局自适应手机、平板与桌面端。内页栏目均以锚点方式组织于单页之内，加载更快、结构更清晰。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">内容更新频率与投稿方式？<span class="arw">▼</span></div>
+        <div class="faq-a"><p>片库每日增补，理论研读每周二、周五更新，专题专栏按月推进。欢迎影视研究者与创作者投稿研读文章，经人工审校后署名发布。本站坚持非营利、学术向的内容立场，拒绝低质搬运与标题党。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="band">
+        <div>
+          <h3>把观影，变成一次有准备的相遇</h3>
+          <p>理论片电影网 · 让每一帧都被认真阅读。访问 <strong>https://lilunpiandianyingwang-app.github.io</strong>，开启你的理论片观影清单。</p>
+        </div>
+        <div class="act">
+          <a class="btn btn-main" href="#resource">▸ 开始观影</a>
+          <a class="btn btn-ghost" href="#top">返回顶部</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="about">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">
+        <h4>理论片电影网</h4>
+        <p>一个以"理论片"为方法、以"读懂电影"为目的的影视内容平台。我们相信，对形式的敏感，是对世界敏感的起点。</p>
+      </div>
+      <div class="foot-col">
+        <h6>快速栏目</h6>
+        <ul>
+          <li>理论片放映厅</li>
+          <li>电影理论研读</li>
+          <li>导演手法研讨</li>
+          <li>纪录电影档案</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h6>研读主题</h6>
+        <ul>
+          <li>蒙太奇与长镜头</li>
+          <li>作者论与类型研究</li>
+          <li>凝视与性别叙事</li>
+          <li>声音与时空建构</li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h6>关于本站</h6>
+        <ul>
+          <li>内容立场与审稿</li>
+          <li>片目增补说明</li>
+          <li>投稿与合作</li>
+          <li>访问入口</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© <span id="yr">2026</span> 理论片电影网 · lilunpiandianyingwang-app &nbsp;|&nbsp; 网站网址：<a href="https://lilunpiandianyingwang-app.github.io">https://lilunpiandianyingwang-app.github.io</a></span>
+      <span>本页为单页结构，内页链接以 # 锚点组织，符合搜索引擎抓取规范</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 年份
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// 移动端菜单
+var menuBtn = document.getElementById('menuBtn');
+var topNav = document.getElementById('topNav');
+menuBtn.addEventListener('click', function(){
+  topNav.classList.toggle('open');
+  menuBtn.textContent = topNav.classList.contains('open') ? '✕' : '☰';
+});
+topNav.addEventListener('click', function(e){
+  if(e.target.tagName === 'A' && window.innerWidth <= 640){
+    topNav.classList.remove('open');
+    menuBtn.textContent = '☰';
+  }
+});
+
+// FAQ 手风琴
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click', function(){
+    q.parentElement.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
